@@ -1,31 +1,35 @@
-import React, {Component, useState} from "react";
-import '../styles/App.css';
-// import RenderPara from "./RenderPara";
+import React, { Component, useState } from "react";
+import "../styles/App.css";
 
 class App extends Component {
-    constructor(props) {
-		super(props);
-		this.state={
-			text: "",
-			id=""
-		}
-	};
-	setText(){
-		this.setState({
-			text:"Hello, I've learnt to use the full-stack evaluation tool. This makes me so happy",
-			id:"para"
-		})
-	}
-    render() {
-    	return(
-    		<div id="main">
-				  {/* Do not remove this main div!!   */}
-				  <button id="click" onClick={()=>this.setText()}>RenderPara</button>
-				  <p id={this.state.id}>{this.state.text}</p>
-    		</div>
-    	);
-    }
-}
+  constructor(props) {
+    super(props);
+    this.state = { display: false };
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleClick() {
+    this.setState({ display: true });
+  }
+
+  render() {
+    return (
+      <div id="main">
+        {/* Do not remove this main div!! */}
+        <button id="click" onClick={this.handleClick}>
+          Click
+        </button>
+        {this.state.display === true ? (
+          <p id="para">
+            Hello, I've learnt to use the full-stack evaluation tool. This makes
+            me so happy
+          </p>
+        ) : (
+          ""
+        )}
+      </div>
+    );
+  }
+}
 
 export default App;
